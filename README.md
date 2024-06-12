@@ -2,7 +2,7 @@
 
 ![Desing system : ] 
 
-(./diagram-export-6-10-2024-9_40_51-PM.png)
+(diagram-export-6-10-2024-9_40_51-PM.png)
 
 
 ## PROJECT CONTEXT
