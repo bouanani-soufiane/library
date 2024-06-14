@@ -6,6 +6,6 @@ import java.sql.SQLException;
 
 public interface Mapper <T> {
     T toObject( ResultSet res ) throws SQLException;
-    void toArray( T object , PreparedStatement preparedStatement );
+    void preparedStatement( T object , PreparedStatement preparedStatement );
 
 }

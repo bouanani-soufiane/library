@@ -1,4 +1,6 @@
 package com.library.dao.interfaces;
 
-public interface BookCopyDaoInterface {
+import com.library.entities.BookCopy;
+
+public interface BookCopyDaoInterface extends CrudInterface<BookCopy> {
 }
