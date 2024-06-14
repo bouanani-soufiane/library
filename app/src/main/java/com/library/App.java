@@ -1,29 +1,20 @@
 package com.library;
 
-import com.library.database.DatabaseConnection;
-import com.library.utils.Print;
-import java.sql.Connection;
-import java.sql.SQLException;
+import com.library.GUI.BookGUI;
+import com.library.GUI.MainGUI;
+import java.util.Scanner;
 
 
 public class App {
+
   public static void main ( String[] args ) {
-    System.out.println( "Hello World!" );
 
-    try {
-      // Attempt to get a database connection
-      DatabaseConnection dbConnection = DatabaseConnection.getInstance();
-      Connection connection = dbConnection.getConnection();
+    MainGUI mainGUI = new MainGUI(new BookGUI());
+    Scanner scanner = new Scanner(System.in);
+    System.out.println("####################################################################################");
+    System.out.println("#                   Hello And Welcome To Book Library Management                   #");
+    System.out.println("####################################################################################");
+    mainGUI.displayOptions(scanner);
 
-      // Check if the connection is not null and open
-      if (connection != null && !connection.isClosed()) {
-        Print.log("Database connection is working.");
-      } else {
-        Print.log("Failed to establish database connection.");
-      }
-    } catch (SQLException e) {
-      Print.log("Error: " + e.getMessage());
-    }
   }
-
 }
