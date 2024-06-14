@@ -1,5 +1,6 @@
 package com.library.GUI;
 
+import java.sql.SQLException;
 import java.util.Scanner;
 
 
@@ -10,7 +11,7 @@ public class MainGUI {
     public MainGUI(BookGUI bookGUI) {
         this.bookGUI = bookGUI;
     }
-    public void displayOptions(Scanner scanner) {
+    public void displayOptions(Scanner scanner) throws SQLException {
         int choice;
         do {
 

@@ -20,8 +20,8 @@ public class BookCopyDaoImplementation implements BookCopyDaoInterface {
     @Override
     public BookCopy store ( BookCopy bookCopy ) {
         return null;
-    }
 
+    }
     @Override
     public BookCopy update ( BookCopy bookCopy ) {
         return null;

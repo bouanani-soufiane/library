@@ -1,9 +1,15 @@
 package com.library.GUI;
 
+import com.library.dao.implementation.BookDaoImplementation;
+import com.library.dao.interfaces.BookDaoInterface;
+import com.library.entities.Book;
+
+import java.sql.SQLException;
 import java.util.Scanner;
 
 public class BookGUI {
-    public void ManageBookMenu( Scanner scanner ){
+
+    public void ManageBookMenu( Scanner scanner ) throws SQLException {
         int choice;
         System.out.println("");
         System.out.println("                    Book Management Menu:");
@@ -21,7 +27,7 @@ public class BookGUI {
                 System.out.println("here is it");
                 break;
             case 2:
-                System.out.println("add");
+                this.AddBookMenu(scanner);
                 break;
             case 3:
                 System.out.println("edit");
@@ -32,4 +38,26 @@ public class BookGUI {
         }
 
     }
+
+    public Book AddBookMenu( Scanner scanner ) throws SQLException {
+        Book book = new Book();
+        BookDaoInterface bookDao = new BookDaoImplementation();
+        System.out.println("enter the ISBN :");
+        long ISBN = scanner.nextLong();
+        book.setISBN(ISBN);
+        System.out.println("enter the Author :");
+        String Author = scanner.next();
+        book.setAuthor(Author);
+        System.out.println("enter the Title :");
+        String Title = scanner.next();
+        book.setTitle(Title);
+        System.out.println("enter the Quantity :");
+        int Quantity = scanner.nextInt();
+        book.setQuantity(Quantity);
+        bookDao.store(book);
+
+        return book;
+
+    }
+
 }

@@ -2,7 +2,6 @@ package com.library.mapper.implementation;
 
 import com.library.entities.Book;
 import com.library.mapper.interfaces.Mapper;
-import org.jetbrains.annotations.NotNull;
 
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -11,7 +10,7 @@ import java.sql.SQLException;
 public class BookMapper implements Mapper<Book> {
 
     @Override
-    public Book toObject ( @NotNull ResultSet res ) throws SQLException {
+    public Book toObject (  ResultSet res ) throws SQLException {
         Book book = new Book();
         try {
             book.setISBN(res.getLong("ISBN"));
@@ -27,7 +26,7 @@ public class BookMapper implements Mapper<Book> {
     }
 
     @Override
-    public void preparedStatement ( @NotNull Book book, @NotNull PreparedStatement preparedStatement ) {
+    public void preparedStatement (  Book book,  PreparedStatement preparedStatement ) {
         try {
             preparedStatement.setLong(1,book.getISBN());
             preparedStatement.setString(2,book.getTitle());
