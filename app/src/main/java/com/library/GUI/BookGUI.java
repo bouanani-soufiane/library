@@ -5,6 +5,7 @@ import com.library.dao.interfaces.BookDaoInterface;
 import com.library.entities.Book;
 
 import java.sql.SQLException;
+import java.util.Optional;
 import java.util.Scanner;
 
 public class BookGUI {
@@ -44,20 +45,22 @@ public class BookGUI {
         BookDaoInterface bookDao = new BookDaoImplementation();
         System.out.println("enter the ISBN :");
         long ISBN = scanner.nextLong();
+        scanner.nextLine();
         book.setISBN(ISBN);
         System.out.println("enter the Author :");
-        String Author = scanner.next();
+        String Author = scanner.nextLine();
         book.setAuthor(Author);
         System.out.println("enter the Title :");
-        String Title = scanner.next();
+        String Title = scanner.nextLine();
         book.setTitle(Title);
         System.out.println("enter the Quantity :");
         int Quantity = scanner.nextInt();
         book.setQuantity(Quantity);
         bookDao.store(book);
-
         return book;
 
     }
+
+
 
 }
