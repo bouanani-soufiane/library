@@ -34,21 +34,21 @@ public class BookDaoImplementation implements BookDaoInterface {
     }
 
     @Override
-    public Optional<Book> getByISBN ( long isbn ) {
+    public Book getByISBN ( long isbn ) {
         try{
             PreparedStatement preparedStatement = connection.prepareStatement("SELECT * FROM book WHERE id = ?");
             preparedStatement.setLong(1, isbn);
             result = preparedStatement.executeQuery();
 
             while (result.next()) {
-                bookList.add()
+                bookList.add(bookMapper.toObject(result));
             }
 
         }
         catch (SQLException e){
             System.out.println(e.getMessage());
         }
-        return Optional.empty();
+        return bookList;
 
 
     }

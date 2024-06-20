@@ -6,5 +6,5 @@ import java.util.Optional;
 
 public interface BookDaoInterface extends CrudInterface <Book>{
 
-    Optional<Book> getByISBN ( long isbn );
+    Book getByISBN ( long isbn );
 }

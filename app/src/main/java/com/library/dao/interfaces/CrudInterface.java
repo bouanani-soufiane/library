@@ -7,7 +7,7 @@ import java.util.Optional;
 public interface CrudInterface<T> {
 
     List<T> getAll();
-    Optional<T>  getByISBN (long isbn);
+    T  getByISBN (long isbn);
     T store(T t) throws SQLException;
     T update(T t);
     T delete(T t);

@@ -13,6 +13,11 @@ public class BookCopyDaoImplementation implements BookCopyDaoInterface {
     }
 
     @Override
+    public BookCopy getByISBN ( long isbn ) {
+        return null;
+    }
+
+    @Override
     public Optional<BookCopy> getById ( long id ) {
         return Optional.empty();
     }
