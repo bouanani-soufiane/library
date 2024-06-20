@@ -26,7 +26,7 @@ public class BookGUI {
 
         switch (choice) {
             case 1:
-                System.out.println("here is it");
+                this.findByIsnb(scanner);
                 break;
             case 2:
                 this.AddBookMenu(scanner);
@@ -62,9 +62,20 @@ public class BookGUI {
 
     }
 
-    public List<Book> getAllBookByIsbn() throws SQLException {
+    public List<Book> findByIsnb ( Scanner scanner ) throws SQLException {
+        BookDaoInterface bookDao = new BookDaoImplementation();
+        System.out.println("enter the ISBN :");
+        long ISBN = scanner.nextLong();
+        scanner.nextLine();
+        return bookDao.getByISBN(ISBN);
 
     }
 
+
+
+    /* public List<Book> getAllBookByIsbn() throws SQLException {
+
+        }
+    */
 
 }
