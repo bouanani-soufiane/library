@@ -40,7 +40,7 @@ public class BookDaoImplementation implements BookDaoInterface {
             System.out.println(e.getMessage());
         }
         return Optional.empty();
-        
+
 
 
 
@@ -62,7 +62,9 @@ public class BookDaoImplementation implements BookDaoInterface {
 
     @Override
     public Book update ( Book book ) {
-        return null;
+        try {
+            PreparedStatement preparedStatement = connection.prepareStatement()
+        }
     }
 
     @Override
