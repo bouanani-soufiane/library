@@ -35,9 +35,11 @@ public class BookDaoImplementation implements BookDaoInterface {
             PreparedStatement preparedStatement = connection.prepareStatement("SELECT * FROM book WHERE id = ?");
             preparedStatement.setLong(1, isbn);
             preparedStatement.executeQuery();
-        }catch (SQLException e){
+        }
+        catch (SQLException e){
             System.out.println(e.getMessage());
         }
+        return Optional.empty();
         
 
 
