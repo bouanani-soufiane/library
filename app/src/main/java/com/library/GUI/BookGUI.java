@@ -5,6 +5,7 @@ import com.library.dao.interfaces.BookDaoInterface;
 import com.library.entities.Book;
 
 import java.sql.SQLException;
+import java.util.List;
 import java.util.Optional;
 import java.util.Scanner;
 
@@ -61,6 +62,9 @@ public class BookGUI {
 
     }
 
+    public List<Book> getAllBookByIsbn() throws SQLException {
+
+    }
 
 
 }

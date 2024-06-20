@@ -7,12 +7,16 @@ import com.library.mapper.implementation.BookMapper;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
 public class BookDaoImplementation implements BookDaoInterface {
     private Connection connection;
+    ResultSet result ;
+    List<Book> bookList = new ArrayList<>();
     private final BookMapper bookMapper;
     public BookDaoImplementation() {
         bookMapper = new BookMapper();
@@ -34,14 +38,17 @@ public class BookDaoImplementation implements BookDaoInterface {
         try{
             PreparedStatement preparedStatement = connection.prepareStatement("SELECT * FROM book WHERE id = ?");
             preparedStatement.setLong(1, isbn);
-            preparedStatement.executeQuery();
+            result = preparedStatement.executeQuery();
+
+            while (result.next()) {
+                bookList.add()
+            }
+
         }
         catch (SQLException e){
             System.out.println(e.getMessage());
         }
         return Optional.empty();
-
-
 
 
     }
@@ -62,9 +69,7 @@ public class BookDaoImplementation implements BookDaoInterface {
 
     @Override
     public Book update ( Book book ) {
-        try {
-            PreparedStatement preparedStatement = connection.prepareStatement()
-        }
+        return null;
     }
 
     @Override
