@@ -36,7 +36,7 @@ public class BookDaoImplementation implements BookDaoInterface {
     @Override
     public List<Book> getByISBN ( long isbn ) {
         try{
-            PreparedStatement preparedStatement = connection.prepareStatement("SELECT * FROM book WHERE id = ?");
+            PreparedStatement preparedStatement = connection.prepareStatement("SELECT * FROM book WHERE ISBN = ?");
             preparedStatement.setLong(1, isbn);
             result = preparedStatement.executeQuery();
 
