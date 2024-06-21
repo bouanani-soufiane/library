@@ -14,7 +14,7 @@ public class BookMapper implements Mapper<Book> {
         Book book = new Book();
         try {
             book.setISBN(res.getLong("ISBN"));
-            book.setTitle(res.getString("TITLE"));
+            book.setTitle(res.getString("TITRE"));
             book.setAuthor(res.getString("AUTHOR"));
             book.setQuantity(res.getInt("QUANTITY"));
         }catch (SQLException e){

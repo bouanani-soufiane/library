@@ -26,7 +26,7 @@ public class BookGUI {
 
         switch (choice) {
             case 1:
-                this.findByIsnb(scanner);
+                this.findByIsbn(scanner);
                 break;
             case 2:
                 this.AddBookMenu(scanner);
@@ -62,14 +62,28 @@ public class BookGUI {
 
     }
 
-    public List<Book> findByIsnb ( Scanner scanner ) throws SQLException {
+    public void findByIsbn(Scanner scanner) throws SQLException {
         BookDaoInterface bookDao = new BookDaoImplementation();
         System.out.println("enter the ISBN :");
         long ISBN = scanner.nextLong();
         scanner.nextLine();
-        return bookDao.getByISBN(ISBN);
 
+        List<Book> books = bookDao.getByISBN(ISBN);
+        if (books.isEmpty()) {
+            System.out.println("No book found with ISBN: " + ISBN);
+        } else {
+            System.out.println("Found book(s):");
+            for (Book book : books) {
+                System.out.println("ISBN: " + book.getISBN());
+                System.out.println("Title: " + book.getTitle());
+                System.out.println("Author: " + book.getAuthor());
+                System.out.println("Quantity: " + book.getQuantity());
+                System.out.println("-------------------------");
+            }
+        }
     }
+
+
 
 
 
