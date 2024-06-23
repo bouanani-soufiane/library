@@ -3,6 +3,7 @@ package com.library.GUI;
 import com.library.dao.implementation.BookDaoImplementation;
 import com.library.dao.interfaces.BookDaoInterface;
 import com.library.entities.Book;
+import com.library.utils.Print;
 
 import java.sql.SQLException;
 import java.util.List;
@@ -26,7 +27,7 @@ public class BookGUI {
 
         switch (choice) {
             case 1:
-                this.findByIsbn(scanner);
+                this.findByAuthor(scanner);
                 break;
             case 2:
                 this.AddBookMenu(scanner);
@@ -86,9 +87,10 @@ public class BookGUI {
     public void findByAuthor(Scanner scanner) throws SQLException {
         BookDaoInterface bookDao = new BookDaoImplementation();
         System.out.println("enter the Author name :");
-        String author = scanner.nextLine();
-
-        List<Book> books = bookDao.getByAuthor(author);
+        String author = Print.readString("Author" ,scanner);
+        System.out.println("hada howa : " + author);
+        
+        List<Book>books = bookDao.getByAuthor(author);
 
         if (books.isEmpty()) {
             System.out.println("No book found with Author: " + author);
