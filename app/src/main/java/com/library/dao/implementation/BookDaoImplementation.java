@@ -54,6 +54,22 @@ public class BookDaoImplementation implements BookDaoInterface {
     }
 
     @Override
+    public List<Book> getByAuthor ( String author ) {
+        try{
+            PreparedStatement preparedStatement = connection.prepareStatement("SELECT * FROM book WHERE AUTHOR = ?");
+            preparedStatement.setString(1, author);
+            result = preparedStatement.executeQuery();
+            while (result.next()) {
+                bookList.add(bookMapper.toObject(result));
+            }
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+        return bookList;
+    }
+
+
+    @Override
     public Book store ( Book book ) throws SQLException {
         try{
             PreparedStatement preparedStatement = connection.prepareStatement("INSERT INTO book(ISBN,TITRE , AUTHOR, QUANTITY) VALUES (?, ?, ? ,?)");

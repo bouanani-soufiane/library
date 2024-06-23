@@ -83,7 +83,28 @@ public class BookGUI {
         }
     }
 
+    public void findByAuthor(Scanner scanner) throws SQLException {
+        BookDaoInterface bookDao = new BookDaoImplementation();
+        System.out.println("enter the Author name :");
+        String author = scanner.nextLine();
 
+        List<Book> books = bookDao.getByAuthor(author);
+
+        if (books.isEmpty()) {
+            System.out.println("No book found with Author: " + author);
+        }else {
+            System.out.println("Found book(s):");
+            for (Book book : books) {
+                System.out.println("ISBN: " + book.getISBN());
+                System.out.println("Title: " + book.getTitle());
+                System.out.println("Author: " + book.getAuthor());
+                System.out.println("Quantity: " + book.getQuantity());
+                System.out.println("-------------------------");
+
+            }
+        }
+
+    }
 
 
 
