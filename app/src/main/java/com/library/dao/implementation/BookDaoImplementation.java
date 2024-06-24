@@ -87,10 +87,11 @@ public class BookDaoImplementation implements BookDaoInterface {
     @Override
     public Book update ( Book book ) {
         try{
-            PreparedStatement preparedStatement = connection.prepareStatement("UPDATE book SET  TITLE = ? , Author = ?,QUANTITY = ? WHERE ISBN = ?");
+            PreparedStatement preparedStatement = connection.prepareStatement("UPDATE book SET  TITRE = ? , Author = ?,QUANTITY = ? WHERE ISBN = ?");
             preparedStatement.setString(1, book.getTitle());
             preparedStatement.setString(2, book.getAuthor());
             preparedStatement.setInt(3, book.getQuantity());
+            preparedStatement.setLong(4, book.getISBN());
             preparedStatement.executeUpdate();
             preparedStatement.close();
 
