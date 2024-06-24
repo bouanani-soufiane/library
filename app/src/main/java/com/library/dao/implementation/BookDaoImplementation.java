@@ -11,7 +11,6 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Optional;
 
 public class BookDaoImplementation implements BookDaoInterface {
     private Connection connection;
@@ -102,8 +101,22 @@ public class BookDaoImplementation implements BookDaoInterface {
     }
 
     @Override
-    public Book delete ( Book book ) {
+    public boolean delete ( Book book ) {
+        try {
+            PreparedStatement preparedStatement = connection.prepareStatement("DELETE FROM book WHERE ISBN = ?");
+            preparedStatement.setLong(1, book.getISBN());
+            int res = preparedStatement.executeUpdate();
+            preparedStatement.close();
+            if(res > 0){
+                System.out.println("Book deleted successfully");
+                return true;
+            }else{
+                return false;
+            }
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
 
-        return book;
+
     }
 }
