@@ -36,7 +36,7 @@ public class BookGUI {
                 this.updateBook(scanner);
                 break;
             default:
-                System.out.println("delete");
+                this.delete(scanner);
                 break;
         }
 
@@ -83,20 +83,29 @@ public class BookGUI {
         return book;
     }
 
+    public void delete ( Scanner scanner ) throws SQLException {
+        BookDaoInterface bookDao = new BookDaoImplementation();
+        System.out.println("enter the ISBN of the book you want to delete :");
+        long ISBN = scanner.nextLong();
+        scanner.nextLine();
+        bookDao.delete(ISBN);
 
-        public void findBook ( Scanner scanner ) throws SQLException {
-        System.out.println("find book by : ");
-        System.out.println("1 - ISBN");
-        System.out.println("2 - Author");
-        System.out.println("3 - Title");
-        int choice = scanner.nextInt();
-        switch (choice) {
-            case 1:
-                this.findByIsbn(scanner);
-                break;
-            case 2:
-                this.findByAuthor(scanner);
-                break;
+    }
+
+
+    public void findBook ( Scanner scanner ) throws SQLException {
+    System.out.println("find book by : ");
+    System.out.println("1 - ISBN");
+    System.out.println("2 - Author");
+    System.out.println("3 - Title");
+    int choice = scanner.nextInt();
+    switch (choice) {
+        case 1:
+            this.findByIsbn(scanner);
+            break;
+        case 2:
+            this.findByAuthor(scanner);
+            break;
         }
     }
 

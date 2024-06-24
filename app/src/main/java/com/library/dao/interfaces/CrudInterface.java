@@ -11,6 +11,6 @@ public interface CrudInterface<T> {
     List<T> getAll();
     T store(T t) throws SQLException;
     T update(T t);
-    boolean delete(T t);
+    boolean delete(long isbn);
 
 }

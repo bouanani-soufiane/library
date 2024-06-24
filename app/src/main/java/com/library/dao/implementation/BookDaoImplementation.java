@@ -101,10 +101,10 @@ public class BookDaoImplementation implements BookDaoInterface {
     }
 
     @Override
-    public boolean delete ( Book book ) {
+    public boolean delete ( long isbn ) {
         try {
             PreparedStatement preparedStatement = connection.prepareStatement("DELETE FROM book WHERE ISBN = ?");
-            preparedStatement.setLong(1, book.getISBN());
+            preparedStatement.setLong(1, isbn);
             int res = preparedStatement.executeUpdate();
             preparedStatement.close();
             if(res > 0){
