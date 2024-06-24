@@ -84,9 +84,7 @@ public class BookGUI {
     }
 
 
-
-
-    public void findBook ( Scanner scanner ) throws SQLException {
+        public void findBook ( Scanner scanner ) throws SQLException {
         System.out.println("find book by : ");
         System.out.println("1 - ISBN");
         System.out.println("2 - Author");
@@ -142,7 +140,6 @@ public class BookGUI {
                 System.out.println("Author: " + book.getAuthor());
                 System.out.println("Quantity: " + book.getQuantity());
                 System.out.println("-------------------------");
-
             }
         }
 
