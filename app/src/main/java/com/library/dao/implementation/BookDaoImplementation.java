@@ -75,6 +75,7 @@ public class BookDaoImplementation implements BookDaoInterface {
             PreparedStatement preparedStatement = connection.prepareStatement("INSERT INTO book(ISBN,TITRE , AUTHOR, QUANTITY) VALUES (?, ?, ? ,?)");
             bookMapper.preparedStatement(book, preparedStatement);
             preparedStatement.executeUpdate();
+            preparedStatement.close();
         }catch (SQLException e){
             System.out.println(e.getMessage());
         }
@@ -85,7 +86,18 @@ public class BookDaoImplementation implements BookDaoInterface {
 
     @Override
     public Book update ( Book book ) {
-        return null;
+        try{
+            PreparedStatement preparedStatement = connection.prepareStatement("UPDATE book SET  TITLE = ? , Author = ?,QUANTITY = ? WHERE ISBN = ?");
+            preparedStatement.setString(1, book.getTitle());
+            preparedStatement.setString(2, book.getAuthor());
+            preparedStatement.setInt(3, book.getQuantity());
+            preparedStatement.executeUpdate();
+            preparedStatement.close();
+
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+        return book;
     }
 
     @Override

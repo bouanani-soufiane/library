@@ -33,7 +33,7 @@ public class BookGUI {
                 this.AddBookMenu(scanner);
                 break;
             case 3:
-                System.out.println("edit");
+                this.updateBook(scanner);
                 break;
             default:
                 System.out.println("delete");
@@ -62,6 +62,29 @@ public class BookGUI {
         return book;
 
     }
+
+    public Book updateBook( Scanner scanner ) throws SQLException {
+        Book book = new Book();
+        BookDaoInterface bookDao = new BookDaoImplementation();
+        System.out.println("enter the ISBN of the book you want to update :");
+        long ISBN = scanner.nextLong();
+        scanner.nextLine();
+        book.setISBN(ISBN);
+        System.out.println("enter the new Author :");
+        String Author = scanner.nextLine();
+        book.setAuthor(Author);
+        System.out.println("enter the new Title :");
+        String Title = scanner.nextLine();
+        book.setTitle(Title);
+        System.out.println("enter the new Quantity :");
+        int Quantity = scanner.nextInt();
+        book.setQuantity(Quantity);
+        bookDao.update(book);
+        return book;
+    }
+
+
+
 
     public void findBook ( Scanner scanner ) throws SQLException {
         System.out.println("find book by : ");
@@ -122,6 +145,7 @@ public class BookGUI {
 
             }
         }
+
 
     }
 
