@@ -14,9 +14,9 @@ import java.util.List;
 
 public class BookDaoImplementation implements BookDaoInterface {
     private Connection connection;
-    ResultSet result ;
-    List<Book> bookList = new ArrayList<>();
     private final BookMapper bookMapper;
+    List<Book> bookList = new ArrayList<>();
+    ResultSet result ;
     public BookDaoImplementation() {
         bookMapper = new BookMapper();
         try{
