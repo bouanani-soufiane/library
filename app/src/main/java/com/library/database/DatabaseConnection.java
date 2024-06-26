@@ -6,50 +6,45 @@ import java.sql.*;
 
 public class DatabaseConnection {
     private static DatabaseConnection instance ;
-    private Connection Conn ;
-    private final String  url = "jdbc:mysql://localhost:3306/library";
-    private final String  username = "soufiane";
-    private final String  password = "1234";
-    private final String  driver = "com.mysql.cj.jdbc.Driver";
+    private Connection connection ;
+    private static final String URL = "jdbc:mysql://localhost:3306/library";
+    private static final String USERNAME = "soufiane";
+    private static final String PASSWORD = "1234";
+    private static final String DRIVER = "com.mysql.cj.jdbc.Driver";
 
     private DatabaseConnection() throws SQLException{
         try {
-            Class.forName(driver);
-            this.Conn = DriverManager.getConnection(url, username, password);
-
+            Class.forName(DRIVER);
+            this.connection = DriverManager.getConnection(URL, USERNAME, PASSWORD);
             Print.log("Connection established.");
-
         }catch (ClassNotFoundException e){
             Print.log("Database Connection Creation Failed : " + e.getMessage());
         }
     }
-    public Connection getConnection (){
-        return Conn;
-    }
+
 
     public static DatabaseConnection getInstance() throws SQLException {
-        if(instance == null){
-            instance = new DatabaseConnection();
-        }else if (instance.getConnection().isClosed()) {
+        if (instance == null || instance.getConnection().isClosed()) {
             instance = new DatabaseConnection();
         }
         return instance;
     }
-
-    public static boolean closeConnection(){
-
-        if (instance ==null){
+    public Connection getConnection (){
+        return connection;
+    }
+    public static boolean closeConnection() {
+        if (instance == null) {
             return false;
-        }else {
-            try {
-                instance.getConnection().close();
-                instance = null;
-                return true;
-            } catch (SQLException e) {
-                Print.log(e.toString());
-            }
         }
-        return false;
+
+        try {
+            instance.getConnection().close();
+            instance = null;
+            return true;
+        } catch (SQLException e) {
+            Print.log(e.toString());
+            return false;
+        }
     }
 
 }
