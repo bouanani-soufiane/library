@@ -7,10 +7,10 @@ import java.sql.*;
 public class DatabaseConnection {
     private static DatabaseConnection instance ;
     private Connection Conn ;
-    private String url = "jdbc:mysql://localhost:3306/library";
-    private String username = "soufiane";
-    private String password = "1234";
-    private String driver = "com.mysql.cj.jdbc.Driver";
+    private final String  url = "jdbc:mysql://localhost:3306/library";
+    private final String  username = "soufiane";
+    private final String  password = "1234";
+    private final String  driver = "com.mysql.cj.jdbc.Driver";
 
     private DatabaseConnection() throws SQLException{
         try {
